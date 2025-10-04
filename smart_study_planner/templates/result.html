@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Your Study Plan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="card">
+    <h1>🎯 Personalized Study Plan</h1>
+
+    <div class="meta">
+      <p><strong>Subject:</strong> {{ subject }}</p>
+      {% if topic %}
+      <p><strong>Topic:</strong> {{ topic }}</p>
+      {% endif %}
+      <p><strong>Confidence:</strong> {{ confidence }}/5</p>
+      <p><strong>Score:</strong> {{ score }}%</p>
+    </div>
+
+    <div class="advice-box">
+      <h2>Recommended Actions</h2>
+      <p>{{ advice }}</p>
+    </div>
+
+    <div class="nav">
+      <a class="button" href="{{ url_for('index') }}">← Back</a>
+      <a class="button" href="{{ url_for('history') }}">History</a>
+    </div>
+  </div>
+</body>
+</html>

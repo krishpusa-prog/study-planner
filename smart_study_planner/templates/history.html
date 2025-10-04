@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Study History</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="card">
+    <h1>📊 Study History</h1>
+
+    {% if entries %}
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Time (UTC)</th>
+            <th>Subject</th>
+            <th>Topic</th>
+            <th>Conf.</th>
+            <th>Score</th>
+            <th>Advice</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for e in entries %}
+          <tr>
+            <td>{{ e.timestamp }}</td>
+            <td>{{ e.subject }}</td>
+            <td>{{ e.topic }}</td>
+            <td>{{ e.confidence }}</td>
+            <td>{{ e.score }}</td>
+            <td>{{ e.advice }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No history yet. Generate a plan first.</p>
+    {% endif %}
+
+    <div class="nav">
+      <a class="button" href="{{ url_for('index') }}">← Back</a>
+    </div>
+  </div>
+</body>
+</html>
